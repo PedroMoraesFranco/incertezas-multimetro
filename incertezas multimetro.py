@@ -82,19 +82,22 @@ def voltimetro_select():
 def DC_voltimetro():
     V = float(input('Insira o valor em Volts '))
 
-    if V<=200:
-        inc = V*(0.8/1000)+0.5
-        print('{}+/-{:.1f}\u03A9'.format(V,inc))
-        print('resolução: 0.1\u03A9')
-    elif 200<V<2e3:
-        inc = V*(0.8/1000)+3
-        print('{} +/-{:1.0f}\u03A9'.format(V,inc))
-        print('resolução: 1\u03A9')
-    elif 2e3<V<2e4:
-        inc = (V*(0.8/1000)+3e1)/1e1
-        print('{} +/-{:10.0f}\u03A9'.format(V/1e1,round(inc,0)*10))
-        print('resolução: 10\u03A9')
-    elif 2e4<V<2e5:
+    if V<=2e-3:
+        inc = V*(0.5/1000)+0.3
+        print('{}+/-{:1.1f}mV'.format(V,inc))
+        print('resolução: 0.1mV')
+    elif 2e-3<V<2:
+        inc = V*(0.5/1000)+3e-3
+        print('{} +/-{:1.3f}V'.format(V,inc))
+        print('resolução: 1mV')
+    elif 2<V<2e1:
+        inc = (V*(0.5/1000)+3e-2)
+        print('{} +/-{:10.2f}V'.format(V,inc))
+        print('resolução: 10mV')
+        ##########################
+        #continuar a partir daqui#
+        ##########################
+    elif 2e1<V<2e5:
         inc = (V*(0.8/1000)+3e2)/1e2
         print('{} +/-{:100.0f}\u03A91'.format(V/1e2,round(inc,0)*1e2))
         print('resolução: 100\u03A9')
@@ -153,6 +156,68 @@ def amperimetro_select():
         AC_amperimetro()
     else:
         print('Opção inválida')
+        multimetro()
+
+def DC_amperimetro():
+    V = float(input('Insira o valor em Volts '))
+
+    if V<=200:
+        inc = V*(0.8/1000)+0.5
+        print('{}+/-{:.1f}\u03A9'.format(V,inc))
+        print('resolução: 0.1\u03A9')
+    elif 200<V<2e3:
+        inc = V*(0.8/1000)+3
+        print('{} +/-{:1.0f}\u03A9'.format(V,inc))
+        print('resolução: 1\u03A9')
+    elif 2e3<V<2e4:
+        inc = (V*(0.8/1000)+3e1)/1e1
+        print('{} +/-{:10.0f}\u03A9'.format(V/1e1,round(inc,0)*10))
+        print('resolução: 10\u03A9')
+    elif 2e4<V<2e5:
+        inc = (V*(0.8/1000)+3e2)/1e2
+        print('{} +/-{:100.0f}\u03A91'.format(V/1e2,round(inc,0)*1e2))
+        print('resolução: 100\u03A9')
+    elif 2e5<V<2e6:
+        inc = (V*(0.8/1000)+3e3)/1e3
+        print('{} +/-{:10.0f}k\u03A9'.format(V/1e3,round(inc,0)*1e3))
+        print('resolução: 1k\u03A9')
+    elif 2e5<V<2e7:
+        inc = (V*(5/1000)+10e5)/1e5
+        print('{} +/-{:10.0f}k\u03A9'.format(V/1e3,round(inc,0)*1e5))
+        print('resolução: 100k\u03A9')
+    else:
+        print('Essa entrada é inválida, retorne ao início')
+        multimetro()
+
+def AC_amperimetro():
+    V = float(input('Insira o valor em Volts '))
+
+    if V<=200:
+        inc = V*(0.8/1000)+0.5
+        print('{}+/-{:.1f}\u03A9'.format(V,inc))
+        print('resolução: 0.1\u03A9')
+    elif 200<V<2e3:
+        inc = V*(0.8/1000)+3
+        print('{} +/-{:1.0f}\u03A9'.format(V,inc))
+        print('resolução: 1\u03A9')
+    elif 2e3<V<2e4:
+        inc = (V*(0.8/1000)+3e1)/1e1
+        print('{} +/-{:10.0f}\u03A9'.format(V/1e1,round(inc,0)*10))
+        print('resolução: 10\u03A9')
+    elif 2e4<V<2e5:
+        inc = (V*(0.8/1000)+3e2)/1e2
+        print('{} +/-{:100.0f}\u03A91'.format(V/1e2,round(inc,0)*1e2))
+        print('resolução: 100\u03A9')
+    elif 2e5<V<2e6:
+        inc = (V*(0.8/1000)+3e3)/1e3
+        print('{} +/-{:10.0f}k\u03A9'.format(V/1e3,round(inc,0)*1e3))
+        print('resolução: 1k\u03A9')
+    elif 2e5<V<2e7:
+        inc = (V*(5/1000)+10e5)/1e5
+        print('{} +/-{:10.0f}k\u03A9'.format(V/1e3,round(inc,0)*1e5))
+        print('resolução: 100k\u03A9')
+    else:
+        print('Essa entrada é inválida, retorne ao início')
         multimetro()
 
 def capacitancia():
